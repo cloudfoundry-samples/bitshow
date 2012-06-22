@@ -1,0 +1,18 @@
+--- 
+applications: 
+  dist/bitshow/bitshow.zip: 
+    name: bitshow
+    framework: 
+      name: standalone
+      info: 
+        mem: 64M
+        description: Standalone Application
+        exec: 
+    runtime: java
+    command: java -jar bitshow_2.9.0-1-0.1.0-SNAPSHOT.jar
+    url: bitshow.${target-base}
+    mem: 512M
+    instances: 1
+    services: 
+      image-store: 
+        type: mongodb

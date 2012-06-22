@@ -9,14 +9,12 @@ import org.clapper.avsl.Logger
 object Server {
   val logger = Logger(getClass)
   def main(args: Array[String]) {
-    unfiltered.jetty.Http(8080).context("/assets") { ctx =>
+    unfiltered.jetty.Http(Option(System.getenv("VCAP_APP_PORT")).getOrElse("8080").toInt).context("/assets") { ctx =>
       ctx.resources(new java.net.URL(
         getClass.getResource("/www/css"), "."))
     }
     .filter(Browse)
     .filter(API)
-    .run({ server =>
-      unfiltered.util.Browser.open(server.url)
-    })
+    .run()
   }
 }

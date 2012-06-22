@@ -1,8 +1,14 @@
-Announcements
+bitshow
 =============
+This is a clone of the nyscala-bitshow project, modified to work on Cloud Foundry.
 
-sbt script is there, just run it from the project base dir:
+### Deploying to Cloud Foundry
 
-    ./sbt
+To deploy the application to Cloud Foundry, simply build the dist and push it to Cloud Foundry using the provided manifest.yml file.  You may need to modify the manifest to use a unique URL.
 
-There is still some **pizza** at the front reception desk.
+```bash
+sbt clean compile package-dist
+vmc push
+Would you like to deploy from the current directory? [Yn]:
+Pushing application 'bitshow'...
+```
