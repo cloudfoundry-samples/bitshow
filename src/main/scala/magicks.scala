@@ -34,27 +34,12 @@ class MagickConverter(override val name: String, command: String) extends Conver
    * the InputStream and places the output in the OutputStream.
    */
   def process(input: InputStream, output: OutputStream): Unit = {
-    val cmd = MagickConverter.MagickPath + "/" + command + " - jpg:-"
-    val exitValue = (Process(cmd) #< input #> output !)
+    val cmd = command + " - jpg:-"
+    val exitValue = (Process(cmd, None, "TMPDIR"->".") #< input #> output !)
 
     if (exitValue != 0)
       throw new Exception
   }
-}
-
-object MagickConverter {
-  private val magickPath = "magick.path"
-
-  /**
-   * The default path is /usr/local/bin. You can override this with the
-   * magick.path system property.
-   */
-  val MagickPath = System.getProperty(magickPath, "/usr/local/bin")
-
-  /**
-   * Override the magick.path
-   */
-  def setMagickPath(path: String): Unit = System.setProperty(magickPath, path)
 }
 
 /**
