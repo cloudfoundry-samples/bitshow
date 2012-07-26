@@ -28,7 +28,7 @@ libraryDependencies ++= Seq(
 resolvers ++= Seq(
   "java m2" at "http://download.java.net/maven/2",
   "tech" at "http://databinder.net/repo/",
-  "scala snapshots" at "http://scala-tools.org/repo-snapshots",
+  "scala snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
   "Spring milestone repository" at "http://maven.springframework.org/milestone"
 )
 
