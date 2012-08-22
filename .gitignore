@@ -6,3 +6,7 @@ project/plugins/project/
 *~
 avsl.log
 dist
+.cache
+.classpath
+.project
+.settings
